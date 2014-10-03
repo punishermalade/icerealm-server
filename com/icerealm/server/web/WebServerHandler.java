@@ -28,8 +28,8 @@ import com.icerealm.server.web.io.ContentHandler;
 import com.icerealm.server.web.io.WebFileHandler;
 
 /**
- * This implementation acts as a simple Web Server that supports the WebSocket
- * protocol.
+ * This implementation acts as a simple Web Server that delivers any files 
+ * that is stored in the root folder.
  * @author punisher
  *
  */
