@@ -97,15 +97,18 @@ public class WebServerHandler implements RequestHandler {
 	 * a very lean webserver to provide static files, image, sound, etc...
 	 */
 	public WebServerHandler() {
+		LOGGER.info("WebServerHandler initializing...");
 		_contentHandler = new WebFileHandler(new CachedContentHandler());
 		_httpOperationHandler = new DefaultHTTPHandler(_contentHandler);
 		_websocketHandler = new DefaultWebSocketHandler();
 		
 		// init the ip addresse blocker
+		LOGGER.info("Setting IP Address Blocker");
 		_ipBlocker = new IPAddressBlocker();
 		_ipBlocker.parseTemplate(new File(DEFAULT_IP_BLOCKED));
 		
 		// init the url pattern blocker
+		LOGGER.info("Setting URL Pattern Blocker");
 		_urlBlocker = new URLPatternBlocker();
 		_urlBlocker.parseTemplate(new File(DEFAULT_URL_BLOCKED));
 	}
@@ -161,7 +164,7 @@ public class WebServerHandler implements RequestHandler {
 			_contentHandler.setRootFolder(_rootFolder);
 		}
 		
-		LOGGER.log(Level.INFO, "Root folder: " + _contentHandler.getRootFolder());
+		LOGGER.log(Level.INFO, "Root folder from config: " + _contentHandler.getRootFolder());
 		
 		// checking if any handler are configured to be used here
 		Map<String, Map<String, String>> allHandlerConfig = WebContainer.getHandlersConfig();

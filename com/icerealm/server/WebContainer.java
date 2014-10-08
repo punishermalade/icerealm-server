@@ -489,32 +489,17 @@ public class WebContainer {
 		 											 "			<class>com.icerealm.server.web.WebServerHandler</class>\n" +
 		 											 "			<port>80</port>\n" +
 		 											 "			<publicfolder>html</publicfolder>\n" +
-		 											 "			<thread>20</thread>\n" +
-		 											 "			<!--\n" +
-		 											 "			this is optional. If there is no custom handler, you can remove\n" +
-		 											 "			this node. if you create your own handler, the name in this node\n" +
-		 											 "			must match the name attribute in the handler section.\n" +
-		 											 "			Ex.: <handlers>myOwnHandler;mySecondHandler</handlers>\n" +
-		 											 "			-->\n" +
-		 											 "			<!--\n" +
-		 											 "			<handlers>defaultGEThandler;mySecondHandler</handlers>\n" +
+		 											 "			<thread>20</thread>\n\n" +
+		 											 "			<!-- example of a handler. browse to http://localhost/defaultGetHandler/DefaultGetHandler to run this handler \n" +
+		 											 "			<handler>\n" +
+		 											 "				<name>DefaultGetHandler</name>\n" +
+		 											 "				<active>true</active>\n" +
+		 											 "				<class>com.icerealm.server.web.http.DefaultGETHandler</class>\n" +
+		 											 "				<path>/defaultGetHandler/</path>\n" +
+		 											 "			</handler>\n" +
 		 											 "			-->\n" +
 		 											 "		</plugin>\n" +
 		 											 "	</plugins>\n" +
-		 											 "	<!-- the list of handler to be used with the web server (web app) -->\n" +
-		 											 "	<handlers>\n" +
-		 											 "		<!-- this is a simple handler example, the <name> must be the same from\n" +
-		 											 "		<handlers> node in the WebServer config\n" +
-		 											 "		-->\n" +
-		 											 "		<!--\n" +
-		 											 "		<handler>\n" +
-		 											 "			<name>defaultGEThandler</name>\n" +
-		 											 "			<active>true</active>\n" +
-		 											 "			<class>com.icerealm.server.web.http.DefaultGETHandler</class>\n" +
-		 											 "			<path>/</path>\n" +
-		 											 "		</handler>\n" +
-		 											 "		-->\n" +
-		 											 "	</handlers>\n" +
 		 											 "</icerealm>\n";
 
 	private static final String _DEFAULT_INDEX_FILE = "<html>" +
