@@ -45,7 +45,7 @@ public class WebContainer {
 	
 	
 	/**
-	 * will use the same Icerealm console log format for the WebServer Stat Engine
+	 * log timestamp format
 	 */
 	public static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss:SSS";
 		
@@ -185,7 +185,7 @@ public class WebContainer {
 				int port = Integer.parseInt(config.get("port"));
 				AppInitializer appInit = new AppInitializer(listener, port);
 				
-				// need a new thread for every listener - fix issue #8
+				// need a new thread for every listener
 				Thread t = new Thread(appInit);
 				t.start();
 
