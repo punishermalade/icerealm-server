@@ -115,8 +115,7 @@ public class WebServerHandler implements RequestHandler {
 	
 	@Override
 	public void handleClientRequest(Socket s) {
-		
-		LOGGER.log(Level.INFO, "client request from " + s.getInetAddress().toString());
+
 		InputStreamReader br = null;
 		OutputStream pw = null;
 		
@@ -133,6 +132,7 @@ public class WebServerHandler implements RequestHandler {
 			
 			// reading the request header to know that to do
 			RequestEntireContent requestContent = new RequestEntireContent(br);
+			LOGGER.log(Level.INFO, "Client from " + s.getInetAddress().toString() + " requested: " + requestContent.getFirstHeaderLine());
 
 			// blocking the url pattern
 			if (_urlBlocker.isBlocked(requestContent)) {

@@ -246,9 +246,11 @@ public class WebContainer {
 			
 			//get a nodelist of elements
 			NodeList nl = docEle.getElementsByTagName(nodeName);
+			
+			
 			if(nl != null && nl.getLength() > 0) {
 				for(int i = 0 ; i < nl.getLength();i++) {
-
+					
 					// creating a general config element
 					Map<String, String> singleConfig = new HashMap<String, String>();
 					
@@ -256,8 +258,10 @@ public class WebContainer {
 					Element el = (Element)nl.item(i);
 					
 					NodeList elNodeList = el.getChildNodes();
+					
 					for (int j = 0; j < elNodeList.getLength(); j++) {
-						Node nodeElement = elNodeList.item(j);							
+						
+						Node nodeElement = elNodeList.item(j);
 						singleConfig.put(nodeElement.getNodeName(), nodeElement.getTextContent());
 					}
 					
