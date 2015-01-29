@@ -25,6 +25,7 @@ import com.icerealm.server.web.http.DefaultHTTPHandler;
 import com.icerealm.server.web.http.HTTPMethodHandler;
 import com.icerealm.server.web.io.CachedContentHandler;
 import com.icerealm.server.web.io.ContentHandler;
+import com.icerealm.server.web.io.WebContentDeliver;
 import com.icerealm.server.web.io.WebFileHandler;
 
 /**
@@ -98,7 +99,8 @@ public class WebServerHandler implements RequestHandler {
 	 */
 	public WebServerHandler() {
 		LOGGER.info("WebServerHandler initializing...");
-		_contentHandler = new WebFileHandler(new CachedContentHandler());
+		//_contentHandler = new WebFileHandler(new CachedContentHandler());
+		_contentHandler = new WebContentDeliver();
 		_httpOperationHandler = new DefaultHTTPHandler(_contentHandler);
 		_websocketHandler = new DefaultWebSocketHandler();
 		

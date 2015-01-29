@@ -35,7 +35,6 @@ public class DefaultHTTPHandler implements HTTPMethodHandler {
 		if (content.getFirstHeaderLine().contains("GET")) {
 			String[] tokenized = content.getFirstHeaderLine().split(" ");
 			String ressource = tokenized[1].substring(1);
-			ressource = appendDefaultFile(ressource);						
 			
 			// construct the byte array for the wanted resource
 			byte[] binContent = _contentHandler.writeContent(ressource);
