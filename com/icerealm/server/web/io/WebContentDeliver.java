@@ -35,9 +35,16 @@ public class WebContentDeliver extends ContentHandler {
 	private Map<String, String> _extensionContentType = null;
 	
 	/**
+	 * represents the cache handler
+	 */
+	private CachedContentDeliver _cachedHandler = null;
+	
+	/**
 	 * default constructor, it initialize the MIME type table
 	 */
 	public WebContentDeliver() {
+		
+		_cachedHandler = new CachedContentDeliver();
 		
 		// defining the entensionContentType
 		_extensionContentType = new HashMap<String, String>();
@@ -112,16 +119,11 @@ public class WebContentDeliver extends ContentHandler {
 		buffer.write((getLastModified(f) + "\n").getBytes());				
 		buffer.write("\n".getBytes());
 
-		// getting the content of the file
-		FileInputStream stream = new FileInputStream(f);
-		int byteRead = 0;
-		while ((byteRead = stream.read()) != -1) {
-			buffer.write(byteRead);
-		}
-		
-		stream.close();
+		// using the cached content handler
+		byte[] fileContent = _cachedHandler.getFileContent(f);
+		buffer.write(fileContent);
 		buffer.flush();
-		buffer.close();	
+		buffer.close();
 		return buffer.toByteArray();
 	}
 	
