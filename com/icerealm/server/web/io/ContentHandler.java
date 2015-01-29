@@ -4,6 +4,8 @@ import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.icerealm.server.request.RequestEntireContent;
+
 /**
  * Retreive a resource and produce an array of
  * byte to be written into a OutputStream.
@@ -24,6 +26,8 @@ public abstract class ContentHandler {
 	 * @return an array of byte that represents the resource
 	 */
 	public abstract byte[] writeContent(String s);
+	
+	public abstract byte[] writeContent(String s, RequestEntireContent req);
 	
 	/**
 	 * Provide a way to set the root folder for a specified resource

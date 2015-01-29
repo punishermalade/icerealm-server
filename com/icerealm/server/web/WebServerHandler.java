@@ -11,22 +11,17 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.icerealm.server.WebContainer;
-import com.icerealm.server.WebContainer;
 import com.icerealm.server.request.RequestBlockedException;
 import com.icerealm.server.request.RequestBlocker;
 import com.icerealm.server.request.RequestEntireContent;
 import com.icerealm.server.request.RequestHandler;
 import com.icerealm.server.socket.DefaultWebSocketHandler;
-import com.icerealm.server.socket.WebSocket;
 import com.icerealm.server.socket.WebSocketHandler;
-import com.icerealm.server.stats.Publisher;
 import com.icerealm.server.web.http.ChainedHTTPMethodHandler;
 import com.icerealm.server.web.http.DefaultHTTPHandler;
 import com.icerealm.server.web.http.HTTPMethodHandler;
-import com.icerealm.server.web.io.CachedContentHandler;
 import com.icerealm.server.web.io.ContentHandler;
 import com.icerealm.server.web.io.WebContentDeliver;
-import com.icerealm.server.web.io.WebFileHandler;
 
 /**
  * This implementation acts as a simple Web Server that delivers any files 

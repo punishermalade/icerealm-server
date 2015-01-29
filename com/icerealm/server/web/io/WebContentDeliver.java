@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.zip.GZIPOutputStream;
+
+import com.icerealm.server.request.RequestEntireContent;
 
 /**
  * This class delivers content that is requested by a remote client. It is optimized for 
@@ -100,6 +103,12 @@ public class WebContentDeliver extends ContentHandler {
 		}
 
 		return fileContent;
+	}
+	
+
+	@Override
+	public byte[] writeContent(String s, RequestEntireContent req) {
+		return writeContent(s);
 	}
 	
 	/**
@@ -233,4 +242,24 @@ public class WebContentDeliver extends ContentHandler {
 		Timestamp tm = new Timestamp(f.lastModified());
 		return "Last-Modified: " + tm.toGMTString();
 	}
+
 }
+
+/*
+ * byte[] data = super.writeContent(getRootFolder() + s);
+		ByteArrayOutputStream raw = new ByteArrayOutputStream();
+	
+		try {
+			GZIPOutputStream compressed = new GZIPOutputStream(raw);
+			compressed.write(data);
+			compressed.finish();
+			
+			return raw.toByteArray();
+			
+		}
+		catch (Exception ex) {
+			LOGGER.log(Level.WARNING, "Problem while compressing content: " + ex.getMessage(), ex);
+		}
+		
+		return new byte[0];
+ */
