@@ -75,7 +75,7 @@ public class WebContentDeliver extends ContentHandler {
 			File file = new File(ressourcePath);
 			
 			if (file.isDirectory()) {
-				
+				/*
 				File[] listOfFiles = getFileList(file);
 				
 				if (listOfFiles.length > 0) {
@@ -84,6 +84,8 @@ public class WebContentDeliver extends ContentHandler {
 				else {
 					fileContent = getFordiddenRessourceContent(s);
 				}
+				*/
+				fileContent = getFordiddenRessourceContent(s);
 			}
 			else if (!file.exists()) {
 				fileContent = getFileNotFoundContent(s);
