@@ -85,7 +85,14 @@ public class WebContentDeliver extends ContentHandler {
 					fileContent = getFordiddenRessourceContent(s);
 				}
 				*/
-				fileContent = getFordiddenRessourceContent(s);
+				if (findIndexFile(file)) {
+					fileContent = getFileContent(new File(ressourcePath + System.getProperty("file.separator") + _defaultIndexFilename));
+				}
+				else {
+					fileContent = getFordiddenRessourceContent(s);
+				}
+				
+				
 			}
 			else if (!file.exists()) {
 				fileContent = getFileNotFoundContent(s);
@@ -187,6 +194,16 @@ public class WebContentDeliver extends ContentHandler {
 		buffer.flush();
 		return buffer.toByteArray();
 	}
+
+	private boolean findIndexFile(File f) {
+		for (File file : f.listFiles()) {
+			if (file.getName().equalsIgnoreCase(_defaultIndexFilename)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	
 	/**
 	 * return the list of file from a directory that meet the filter criteria
@@ -202,7 +219,7 @@ public class WebContentDeliver extends ContentHandler {
 			}
 		});
 	}
-	
+
 	/**
 	 * return the content length of a file
 	 * @param f the file

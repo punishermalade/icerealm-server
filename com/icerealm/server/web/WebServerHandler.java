@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.icerealm.server.WebContainer;
+import com.icerealm.server.request.RequestEntireContent;
 import com.icerealm.server.request.RequestBlockedException;
 import com.icerealm.server.request.RequestBlocker;
 import com.icerealm.server.request.RequestEntireContent;
