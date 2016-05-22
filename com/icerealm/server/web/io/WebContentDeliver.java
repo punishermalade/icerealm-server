@@ -75,24 +75,13 @@ public class WebContentDeliver extends ContentHandler {
 			File file = new File(ressourcePath);
 			
 			if (file.isDirectory()) {
-				/*
-				File[] listOfFiles = getFileList(file);
-				
-				if (listOfFiles.length > 0) {
-					fileContent = getFileContent(new File(ressourcePath + System.getProperty("file.separator") + _defaultIndexFilename));
-				}
-				else {
-					fileContent = getFordiddenRessourceContent(s);
-				}
-				*/
+
 				if (findIndexFile(file)) {
 					fileContent = getFileContent(new File(ressourcePath + System.getProperty("file.separator") + _defaultIndexFilename));
 				}
 				else {
 					fileContent = getFordiddenRessourceContent(s);
 				}
-				
-				
 			}
 			else if (!file.exists()) {
 				fileContent = getFileNotFoundContent(s);
@@ -195,6 +184,11 @@ public class WebContentDeliver extends ContentHandler {
 		return buffer.toByteArray();
 	}
 
+	/**
+	 * check a directory to find the default index filename
+	 * @param f the directory to search
+	 * @return returns true if the index file is found, otherwise false
+	 */
 	private boolean findIndexFile(File f) {
 		for (File file : f.listFiles()) {
 			if (file.getName().equalsIgnoreCase(_defaultIndexFilename)) {
@@ -203,21 +197,6 @@ public class WebContentDeliver extends ContentHandler {
 		}
 		
 		return false;
-	}
-	
-	/**
-	 * return the list of file from a directory that meet the filter criteria
-	 * @param f the directory to be searched
-	 * @return a list of valid file
-	 */
-	private File[] getFileList(File f) {
-		return f.listFiles(new FilenameFilter() {
-			
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.equalsIgnoreCase(_defaultIndexFilename);
-			}
-		});
 	}
 
 	/**
@@ -263,22 +242,3 @@ public class WebContentDeliver extends ContentHandler {
 	}
 
 }
-
-/*
- * byte[] data = super.writeContent(getRootFolder() + s);
-		ByteArrayOutputStream raw = new ByteArrayOutputStream();
-	
-		try {
-			GZIPOutputStream compressed = new GZIPOutputStream(raw);
-			compressed.write(data);
-			compressed.finish();
-			
-			return raw.toByteArray();
-			
-		}
-		catch (Exception ex) {
-			LOGGER.log(Level.WARNING, "Problem while compressing content: " + ex.getMessage(), ex);
-		}
-		
-		return new byte[0];
- */
