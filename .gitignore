@@ -1,1 +1,6 @@
 *.class
+.DS_Store
+.idea/
+.project
+.classpath
+
