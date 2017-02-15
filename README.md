@@ -37,7 +37,7 @@ People might wonder, why did you write a new web server while there is already a
 
 One night, after couple days of trying multiple open-source projects, I found a website that had a very simple WebSocket implementation. I was curious to see how I could just use this Java class. This is how the icerealm-server was born. Actually, it was reborn because I did another project before this one that was also a web server. But the code was ugly and did not support the WebSocket protocol.
 
-As we speak, this server is running my own website, http://omniscia.no-ip.biz and it hosts a couple projects and act as my own space on the web. I hope you'll enjoy progamming some plugin for this server and let me know if you'd like a feature implemented.
+I hope you'll enjoy progamming some plugin for this server and let me know if you'd like a feature implemented.
 
 
 
